@@ -522,6 +522,7 @@ ul {
 .bookmark-img {
     width: clamp(150px, 20vw, 250px);
     height: auto;
+    margin-left: 4rem;
     border: 3px solid var(--gold);
     border-radius: 15px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
