@@ -25,17 +25,30 @@ body {
 }
 
 a {
-    display: flex;
     text-decoration: none;
     color: inherit;
 }
 
+/* ===== NAVIGATION ===== */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem 0 2rem;
     width: 100%;
+    position: relative;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+#name {
+    font-family: 'Bilbo Swash Caps';
+    font-size: 2.5rem;
 }
 
 ul {
@@ -44,7 +57,47 @@ ul {
     list-style-type: none;
 }
 
-/* HERO SECTION STYLE */
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* ===== HAMBURGER MENU ===== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-white);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===== HERO SECTION ===== */
 #hero-section {
     position: relative;
     height: 100svh;
@@ -85,7 +138,7 @@ ul {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("assets/typewriter.jpg");
+    background-image: url("assets/typewriter.webp");
     background-size: cover;
     background-position: center;
     opacity: 1;
@@ -96,16 +149,16 @@ ul {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
         linear-gradient(rgba(111, 29, 27, 0.25), rgba(111, 29, 27, 0.25));
     z-index: -1;
     mix-blend-mode: multiply;
 }
 
-#hero-section * {
+/* REMOVI O position: relative do #hero-section * */
+/* Agora apenas o conteúdo necessário tem position relative */
+.cta-row {
     position: relative;
-    z-index: 1;
 }
 
 .cta-row {
@@ -115,6 +168,7 @@ ul {
     justify-content: end;
     gap: 1rem;
     margin-top: 3rem;
+    margin-right: 2rem;
     width: 100%;
 }
 
@@ -151,7 +205,6 @@ ul {
     line-height: 1;
     text-align: left;
     white-space: nowrap;
-
     transform: rotate(-10deg) translateY(-35px);
 }
 
@@ -161,17 +214,6 @@ ul {
     font-size: 3.5rem;
     opacity: 0.9;
     white-space: nowrap;
-}
-
-#name {
-    font-family: 'Bilbo Swash Caps';
-    font-size: 2.5rem;
-}
-
-.social-buttons {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
 }
 
 .y-section-divider {
@@ -186,7 +228,7 @@ ul {
     background-color: #6F1D1B;
 }
 
-/* ABOUT SECTION STYLE */
+/* ===== ABOUT SECTION ===== */
 #about {
     height: 100svh;
     display: flex;
@@ -221,6 +263,8 @@ ul {
 
 .about-text-title {
     display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .about-text h1 {
@@ -231,6 +275,7 @@ ul {
 
 .about-text p {
     padding: 0 3rem;
+    line-height: 1.6;
 }
 
 .about-text img {
@@ -243,15 +288,13 @@ ul {
     height: 30%;
     object-fit: cover;
     object-position: center;
-
     opacity: 0.6;
     background-color: #6F1D1B;
     display: block;
     margin: 0;
 }
 
-/* BOOK SECTION STYLE */
-
+/* ===== BOOK SECTION ===== */
 #book {
     width: 100%;
     background-color: #B38E5D;
@@ -297,11 +340,12 @@ ul {
 
 .book-3d {
     width: 100%;
+    max-width: 400px;
     height: auto;
     filter: drop-shadow(15px 15px 30px rgba(0, 0, 0, 0.4));
     transition: transform 0.3s ease, filter 0.3s ease;
     transform: translateY(-5px);
-    border-radius: 8px 8px 8px 8px;
+    border-radius: 8px;
 }
 
 .book-3d:hover {
@@ -333,9 +377,7 @@ ul {
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0.5;
-
     mix-blend-mode: overlay;
-
     z-index: -1;
 }
 
@@ -427,37 +469,7 @@ ul {
     transform: translateY(-3px);
 }
 
-@media (max-width: 900px) {
-    .book-container {
-        flex-direction: column;
-        gap: 3rem;
-    }
-
-    .book-cover-wrapper,
-    .synopsis-card {
-        width: 100%;
-    }
-
-    .book-3d {
-        max-width: 300px;
-        transform: rotateY(0) rotateX(0);
-    }
-}
-
-@media (max-width: 480px) {
-    .book-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .btn-buy,
-    .btn-universe {
-        width: 100%;
-    }
-}
-
-/* REVIEWS SECTION STYLE */
-
+/* ===== REVIEWS SECTION ===== */
 #reviews {
     position: relative;
     min-height: 100vh;
@@ -474,7 +486,7 @@ ul {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url('assets/background-reviews.jpg');
+    background-image: url('assets/background-reviews.webp');
     background-size: cover;
     background-position: center;
     filter: brightness(0.4);
@@ -571,22 +583,7 @@ ul {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 900px) {
-    .reviews-content {
-        flex-direction: column;
-        gap: 3rem;
-    }
-
-    .btn-amazon {
-        align-self: center;
-    }
-
-    .review-card:hover {
-        transform: translateY(-5px);
-    }
-}
-
-
+/* ===== CONTACT SECTION ===== */
 #contact {
     position: relative;
     min-height: 100vh;
@@ -596,7 +593,6 @@ ul {
     align-items: center;
     justify-content: center;
     padding: 4rem 2rem;
-
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url('assets/bg-contact.jpg') no-repeat center center/cover;
 }
@@ -618,6 +614,7 @@ ul {
     color: var(--beige);
     font-size: 1.1rem;
     margin-top: 1rem;
+    line-height: 1.6;
 }
 
 .contact-card {
@@ -689,6 +686,7 @@ ul {
     border: none;
     font-family: 'Merriweather', sans-serif;
     width: 100%;
+    font-size: 1rem;
 }
 
 .contact-form textarea {
@@ -708,12 +706,14 @@ ul {
     align-self: center;
     margin-top: 1rem;
     transition: transform 0.2s;
+    font-family: 'Merriweather', serif;
 }
 
 .btn-send:hover {
     transform: scale(1.05);
 }
 
+/* ===== FOOTER ===== */
 footer {
     width: 100%;
     background-color: #110202;
@@ -730,162 +730,65 @@ footer p {
     opacity: 0.8;
 }
 
-@media (max-width: 850px) {
-    .contact-card {
-        flex-direction: column;
-    }
+/* ===== RESPONSIVE STYLES ===== */
 
-    .card-visual {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
     nav {
-        flex-direction: column;
-        gap: 1.5rem;
-        padding: 2rem 1rem;
+        padding: 1rem 1.5rem 0 1.5rem;
     }
 
     ul {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    ul li a {
-        font-size: 0.9rem;
-    }
-
-    #hero-section {
-        height: auto;
-        min-height: 100svh;
-        padding: 8rem 1rem 4rem 1rem;
-    }
-
-    .hero-content {
         gap: 2rem;
     }
 
-    .hero-title {
-        font-size: 1.8rem;
+    .nav-container {
+        gap: 2rem;
     }
 
-    .hero-subtitle {
-        max-width: 100%;
-        font-size: 1rem;
-    }
-
-    .cta-row {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 0.8rem;
-        width: 100%;
-    }
-
-    .btn-primary {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-        min-width: auto;
-    }
-
-    .arrow-img {
-        width: 30px;
-    }
-
-    .side-text {
-        font-size: 0.9rem;
-        transform: rotate(-10deg) translateY(-10px);
-        white-space: nowrap;
-        text-align: left;
-    }
-
-    .author-sig {
-        flex: 0 0 100%;
-        width: 100%;
-        text-align: center;
-        margin-top: 1rem;
-        font-size: 2.5rem;
-        margin-left: 0;
-    }
-
+    /* About Section - Tablet */
     #about {
-        flex-direction: column-reverse;
         height: auto;
+        min-height: 100vh;
+        flex-direction: column;
     }
 
     #leonan {
+        max-height: 80vh;
         width: 100%;
-        height: 450px;
         flex: none;
+        opacity: 1;
     }
 
     .about-div {
-        flex: none;
-        width: 100%;
-    }
-
-    .about-text {
-        padding: 3rem 1.5rem;
-    }
-
-    .about-text h1 {
-        font-size: 2.2rem;
+        padding: 3rem 2rem;
     }
 
     .about-text p {
-        padding: 0;
-        text-align: left;
-        font-size: 1rem;
+        padding: 0 2rem;
     }
 
     .about-div>img {
-        height: 180px;
+        height: 200px;
     }
 
-    #book {
-        padding: 4rem 1.5rem;
-    }
-
+    /* Book Section - Tablet */
     .book-container {
         flex-direction: column;
         gap: 3rem;
     }
 
-    .book-cover-wrapper,
+    .book-cover-wrapper {
+        width: 100%;
+        max-width: 400px;
+    }
+
     .synopsis-card {
         width: 100%;
-        min-width: unset;
+        max-width: 600px;
     }
 
-    .book-3d {
-        max-width: 280px;
-        transform: none;
-    }
-
-    .book-actions {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .btn-buy,
-    .btn-universe {
-        width: 100%;
-    }
-
-    #poetry {
-        height: auto;
-        min-height: 100vh;
-        padding: 5rem 1.5rem;
-    }
-
-    .poem-card {
-        padding: 2rem 1.5rem;
-    }
-
+    /* Reviews Section - Tablet */
     .reviews-content {
         flex-direction: column;
         gap: 3rem;
@@ -896,19 +799,346 @@ footer p {
     }
 
     .bookmark-img {
-        width: 150px;
+        width: 180px;
     }
 
-    .review-card:hover {
-        transform: translateY(-5px);
+    .reviews-column {
+        max-width: 100%;
     }
 
     .btn-amazon {
         align-self: center;
     }
 
+    /* Contact Section - Tablet */
+    .contact-card {
+        flex-direction: column;
+        max-width: 600px;
+    }
+
+    .card-visual {
+        display: none;
+    }
+
+    .card-info,
+    .card-form-wrapper {
+        padding: 2.5rem 2rem;
+    }
+}
+
+/* Mobile (até 767px) */
+@media (max-width: 767px) {
+
+    /* Navigation - Mobile */
+    nav {
+        padding: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(61, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        height: 70px;
+        padding-top: 1rem;
+    }
+
+    #name {
+        font-size: 2rem;
+        z-index: 1001;
+    }
+
+    .hamburger {
+        display: flex;
+        position: relative;
+        z-index: 1002;
+    }
+
+    .nav-container {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--wine);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+        z-index: 1000;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+    }
+
+    .nav-container.active {
+        left: 0;
+    }
+
+    ul {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+        padding-top: 1rem;
+    }
+
+    ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    ul li a {
+        font-size: 1.2rem;
+        padding: 0.8rem;
+        display: block;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .social-buttons {
+        margin-top: 1rem;
+        gap: 1.5rem;
+    }
+
+    .social-buttons img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Hero Section - Mobile */
+    #hero-section {
+        height: 100svh;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* O header dentro da hero-section continua absolute, mas o nav tem background */
+    #hero-section header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(61, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+    }
+
+    .hero-content {
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    .hero-subtitle {
+        max-width: 100%;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .cta-row {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        width: 100%;
+    }
+
+    .btn-primary {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .arrow-img {
+        width: 30px;
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+    }
+
+    .side-text {
+        font-size: 0.9rem;
+        transform: none;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.3;
+    }
+
+    .author-sig {
+        font-size: 2.5rem;
+        margin-top: 0.5rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* About Section - Mobile */
+    #about {
+        flex-direction: column;
+        min-height: auto;
+        padding-top: 0;
+    }
+
+    #leonan {
+        min-height: auto;
+        width: 100%;
+        order: 1;
+    }
+
+    .about-div {
+        padding: 2rem 1rem;
+        order: 2;
+    }
+
+    .about-text {
+        padding: 0;
+    }
+
+    .about-text h1 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .about-text p {
+        padding: 0;
+        text-align: left;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .about-text-title {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .about-div>img {
+        height: 150px;
+        margin-top: 1rem;
+    }
+
+    /* Book Section - Mobile */
+    #book {
+        padding: 3rem 1rem;
+    }
+
+    #book h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .book-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .book-cover-wrapper {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .book-3d {
+        max-width: 280px;
+    }
+
+    .synopsis-card {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    .synopsis-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .synopsis-card p {
+        font-size: 1rem;
+    }
+
+    .book-actions {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 2.5rem;
+        gap: 1rem;
+    }
+
+    .btn-buy,
+    .btn-universe {
+        width: 100%;
+        max-width: 300px;
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+        min-width: auto;
+    }
+
+    /* Reviews Section - Mobile */
+    #reviews {
+        padding: 3rem 1rem;
+    }
+
+    #reviews h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .reviews-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .bookmark-container {
+        order: -1;
+    }
+
+    .bookmark-img {
+        width: 150px;
+    }
+
+    .review-card {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .review-card p {
+        font-size: 1rem;
+    }
+
+    .review-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .btn-amazon {
+        align-self: center;
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* Contact Section - Mobile */
     #contact {
-        padding: 4rem 1.5rem;
+        padding: 3rem 1rem;
+    }
+
+    .contact-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .contact-header p {
+        font-size: 1rem;
     }
 
     .contact-card {
@@ -921,15 +1151,117 @@ footer p {
 
     .card-info,
     .card-form-wrapper {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .card-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.8rem;
+        font-size: 1rem;
     }
 
     .btn-send {
         width: 100%;
+        max-width: 200px;
+        padding: 0.8rem 1.5rem;
     }
 
     footer p {
-        font-size: 0.7rem;
-        line-height: 1.5;
+        font-size: 0.8rem;
+        line-height: 1.4;
+        padding: 0.5rem;
+    }
+}
+
+/* Small Mobile (até 480px) */
+@media (max-width: 480px) {
+    #name {
+        font-size: 1.8rem;
+    }
+
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .about-text h1 {
+        font-size: 1.8rem;
+    }
+
+    #book h1 {
+        font-size: 1.8rem;
+    }
+
+    .synopsis-card {
+        padding: 1.2rem;
+    }
+
+    .review-card {
+        padding: 1rem 1.2rem;
+    }
+}
+
+/* Large Mobile (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    nav {
+        padding: 1rem 1.5rem;
+    }
+
+    #hero-section {
+        padding: 0 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .about-div {
+        padding: 2rem 1.5rem;
+    }
+
+    #book {
+        padding: 3rem 1.5rem;
+    }
+
+    #reviews {
+        padding: 3rem 1.5rem;
+    }
+
+    #contact {
+        padding: 3rem 1.5rem;
+    }
+}
+
+/* Desktop acima de 768px - garante que o menu normal aparece */
+@media (min-width: 768px) {
+    .nav-container {
+        display: flex !important;
+    }
+
+    .hamburger {
+        display: none !important;
+    }
+}
+
+/* Alturas específicas para tablets em landscape */
+@media (max-height: 768px) and (min-width: 768px) {
+    #about {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    #hero-section {
+        height: 100vh;
     }
 }

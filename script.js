@@ -20,5 +20,23 @@ var makeItRain = function () {
 }
 
 $(document).ready(function () {
+
+    $('.hamburger').click(function () {
+        $(this).toggleClass('active');
+        $('.nav-container').toggleClass('active');
+    });
+
+    $('.nav-container a').click(function () {
+        $('.hamburger').removeClass('active');
+        $('.nav-container').removeClass('active');
+    });
+
+    $(document).click(function (event) {
+        if (!$(event.target).closest('nav').length) {
+            $('.hamburger').removeClass('active');
+            $('.nav-container').removeClass('active');
+        }
+    });
+
     makeItRain();
 });
