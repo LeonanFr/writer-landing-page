@@ -155,8 +155,6 @@ ul {
     mix-blend-mode: multiply;
 }
 
-/* REMOVI O position: relative do #hero-section * */
-/* Agora apenas o conteúdo necessário tem position relative */
 .cta-row {
     position: relative;
 }
@@ -168,7 +166,6 @@ ul {
     justify-content: end;
     gap: 1rem;
     margin-top: 3rem;
-    margin-right: 2rem;
     width: 100%;
 }
 
@@ -772,6 +769,10 @@ footer p {
         height: 200px;
     }
 
+    .cta-row {
+        padding-right: 2rem;
+    }
+
     /* Book Section - Tablet */
     .book-container {
         flex-direction: column;
@@ -853,6 +854,10 @@ footer p {
         z-index: 1002;
     }
 
+    .cta-row {
+        padding-right: 0;
+    }
+
     .nav-container {
         position: fixed;
         top: 0;
@@ -913,7 +918,6 @@ footer p {
         align-items: center;
     }
 
-    /* O header dentro da hero-section continua absolute, mas o nav tem background */
     #hero-section header {
         position: absolute;
         top: 0;
@@ -1243,7 +1247,7 @@ footer p {
     }
 }
 
-/* Desktop acima de 768px - garante que o menu normal aparece */
+/* Desktop acima de 768px */
 @media (min-width: 768px) {
     .nav-container {
         display: flex !important;
