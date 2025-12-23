@@ -167,34 +167,3 @@
         transform: scale(1.5);
     }
 }
-
-@media (max-width: 768px) {
-    #poetry {
-        height: auto;
-        min-height: 100vh;
-        padding: 6rem 1rem;
-    }
-
-    .poetry-container {
-        width: 100%;
-    }
-
-    .poem-card {
-        padding: 2rem 1.5rem;
-        width: 100%;
-    }
-
-    @keyframes drop {
-        0% {
-            transform: translateY(0vh);
-        }
-
-        85% {
-            transform: translateY(105vh);
-        }
-
-        100% {
-            transform: translateY(105vh);
-        }
-    }
-}

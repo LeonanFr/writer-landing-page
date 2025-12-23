@@ -5,7 +5,8 @@ var makeItRain = function () {
     var drops = "";
     var backDrops = "";
 
-    while (increment < 100) {
+    var density = window.innerWidth < 768 ? 40 : 100;
+    while (increment < density) {
         var randoHundo = (Math.floor(Math.random() * (98 - 1 + 1) + 1));
         var randoFiver = (Math.floor(Math.random() * (5 - 2 + 1) + 2));
         increment += randoFiver;
