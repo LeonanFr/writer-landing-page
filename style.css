@@ -227,35 +227,35 @@ ul {
 
 /* ===== ABOUT SECTION ===== */
 #about {
-    height: 100svh;
     display: flex;
-    align-items: stretch;
     width: 100%;
+    overflow: hidden;
 }
 
+/* Layout desktop */
 #leonan {
-    flex: 1;
+    width: 50%;
+    object-fit: cover;
+    object-position: center top;
     background-color: #6F1D1B;
     opacity: 0.8;
-    object-fit: cover;
     display: block;
 }
 
 .about-div {
-    flex: 1;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .about-text {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 1rem;
-    gap: 1rem;
-    height: 100%;
+    align-items: center;
+    padding: 2rem;
+    gap: 1.5rem;
 }
 
 .about-text-title {
@@ -265,18 +265,22 @@ ul {
 }
 
 .about-text h1 {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
     font-family: 'Merriweather', serif;
     color: #BB9457;
+    text-align: center;
 }
 
 .about-text p {
-    padding: 0 3rem;
+    padding: 0 clamp(1rem, 3vw, 3rem);
     line-height: 1.6;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    text-align: center;
+    max-width: 800px;
 }
 
 .about-text img {
-    width: 3rem;
+    width: clamp(2rem, 3vw, 3rem);
     height: auto;
 }
 
@@ -288,7 +292,6 @@ ul {
     opacity: 0.6;
     background-color: #6F1D1B;
     display: block;
-    margin: 0;
 }
 
 /* ===== BOOK SECTION ===== */
@@ -729,48 +732,53 @@ footer p {
 
 /* ===== RESPONSIVE STYLES ===== */
 
-/* Tablet (768px - 1024px) */
-@media (max-width: 1024px) {
-    nav {
-        padding: 1rem 1.5rem 0 1.5rem;
+/* Telas muito pequenas (até 425px) */
+@media (max-width: 425px) {
+    #leonan {
+        object-position: center -75px;
     }
+}
 
-    ul {
-        gap: 2rem;
-    }
-
-    .nav-container {
-        gap: 2rem;
-    }
+/* Tablet (até 768px) */
+@media (max-width: 768px) {
 
     /* About Section - Tablet */
     #about {
-        height: auto;
-        min-height: 100vh;
         flex-direction: column;
+        min-height: auto;
     }
 
     #leonan {
-        max-height: 80vh;
         width: 100%;
-        flex: none;
+        height: auto;
+        min-height: 350px;
+        max-height: 500px;
         opacity: 1;
+        order: 1;
     }
 
     .about-div {
+        width: 100%;
+        order: 2;
+    }
+
+    .about-text {
         padding: 3rem 2rem;
+        gap: 1.5rem;
+    }
+
+    .about-text h1 {
+        font-size: clamp(2.2rem, 4vw, 3rem);
     }
 
     .about-text p {
-        padding: 0 2rem;
+        padding: 0 1.5rem;
+        font-size: clamp(1rem, 1.5vw, 1.1rem);
+        text-align: left;
     }
 
     .about-div>img {
-        height: 200px;
-    }
-
-    .cta-row {
-        padding-right: 2rem;
+        height: 180px;
     }
 
     /* Book Section - Tablet */
@@ -827,6 +835,61 @@ footer p {
     }
 }
 
+/* Laptop (até 1024px) */
+@media (max-width: 1024px) {
+
+    /* About Section - Laptop */
+    #about {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    #leonan {
+        width: 100%;
+        height: auto;
+        min-height: 50%;
+        max-height: 100vh;
+        opacity: 1;
+        order: 1;
+    }
+
+    .about-div {
+        width: 100%;
+        order: 2;
+    }
+
+    .about-text {
+        padding: 3rem 2rem;
+        gap: 1.5rem;
+    }
+
+    .about-text h1 {
+        font-size: clamp(2.2rem, 4vw, 3rem);
+    }
+
+    .about-text p {
+        padding: 0 1.5rem;
+        font-size: clamp(1rem, 1.5vw, 1.1rem);
+        text-align: left;
+    }
+
+    .about-div>img {
+        height: 180px;
+    }
+
+    nav {
+        padding: 1rem 1.5rem 0 1.5rem;
+    }
+
+    ul {
+        gap: 2rem;
+    }
+
+    .nav-container {
+        gap: 2rem;
+    }
+}
+
 /* Mobile (até 767px) */
 @media (max-width: 767px) {
 
@@ -852,10 +915,6 @@ footer p {
         display: flex;
         position: relative;
         z-index: 1002;
-    }
-
-    .cta-row {
-        padding-right: 0;
     }
 
     .nav-container {
@@ -990,23 +1049,24 @@ footer p {
     }
 
     #leonan {
-        min-height: auto;
         width: 100%;
+        height: 300px;
+        min-height: auto;
         order: 1;
     }
 
     .about-div {
-        padding: 2rem 1rem;
+        width: 100%;
         order: 2;
     }
 
     .about-text {
-        padding: 0;
+        padding: 2rem 1rem;
+        gap: 1rem;
     }
 
     .about-text h1 {
         font-size: 2.2rem;
-        text-align: center;
     }
 
     .about-text p {
@@ -1181,91 +1241,25 @@ footer p {
     }
 }
 
-/* Small Mobile (até 480px) */
-@media (max-width: 480px) {
-    #name {
-        font-size: 1.8rem;
+/* Desktop acima de 1024px */
+@media (min-width: 1025px) {
+    #about {
+        height: 100svh;
     }
 
-    .hero-title {
-        font-size: 1.6rem;
-    }
-
-    .hero-subtitle {
-        font-size: 0.95rem;
-    }
-
-    .about-text h1 {
-        font-size: 1.8rem;
-    }
-
-    #book h1 {
-        font-size: 1.8rem;
-    }
-
-    .synopsis-card {
-        padding: 1.2rem;
-    }
-
-    .review-card {
-        padding: 1rem 1.2rem;
-    }
-}
-
-/* Large Mobile (481px - 767px) */
-@media (min-width: 481px) and (max-width: 767px) {
-    nav {
-        padding: 1rem 1.5rem;
-    }
-
-    #hero-section {
-        padding: 0 1.5rem;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.1rem;
+    #leonan {
+        height: 100svh;
     }
 
     .about-div {
-        padding: 2rem 1.5rem;
+        height: 100svh;
     }
 
-    #book {
-        padding: 3rem 1.5rem;
-    }
-
-    #reviews {
-        padding: 3rem 1.5rem;
-    }
-
-    #contact {
-        padding: 3rem 1.5rem;
-    }
-}
-
-/* Desktop acima de 768px */
-@media (min-width: 768px) {
     .nav-container {
         display: flex !important;
     }
 
     .hamburger {
         display: none !important;
-    }
-}
-
-/* Alturas específicas para tablets em landscape */
-@media (max-height: 768px) and (min-width: 768px) {
-    #about {
-        height: auto;
-        min-height: 100vh;
-    }
-
-    #hero-section {
-        height: 100vh;
     }
 }
