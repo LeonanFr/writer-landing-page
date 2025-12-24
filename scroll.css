@@ -1,0 +1,106 @@
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1s forwards;
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid #d4af37;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    position: relative;
+}
+
+.wheel {
+    width: 4px;
+    height: 10px;
+    background-color: #d4af37;
+    border-radius: 2px;
+    animation: scrollWheel 2s infinite;
+}
+
+.scroll-text {
+    color: #d4af37;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 0;
+    animation: pulseText 2s infinite;
+}
+
+@keyframes scrollWheel {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(15px);
+        opacity: 0;
+    }
+}
+
+@keyframes pulseText {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .scroll-indicator {
+        bottom: 30px;
+    }
+
+    .mouse {
+        width: 25px;
+        height: 40px;
+    }
+
+    .wheel {
+        width: 3px;
+        height: 8px;
+    }
+
+    .scroll-text {
+        font-size: 12px;
+    }
+}
+
+.scrolled .scroll-indicator {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
