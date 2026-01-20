@@ -1042,6 +1042,10 @@ footer p {
         width: 100%;
     }
 
+    .scroll-indicator {
+        display: none !important;
+    }
+
     /* About Section - Mobile */
     #about {
         flex-direction: column;
