@@ -740,157 +740,6 @@ footer p {
     }
 }
 
-/* Tablet (até 768px) */
-@media (max-width: 768px) {
-
-    /* About Section - Tablet */
-    #about {
-        flex-direction: column;
-        min-height: auto;
-    }
-
-    #leonan {
-        width: 100%;
-        height: auto;
-        min-height: 350px;
-        max-height: 500px;
-        opacity: 1;
-        order: 1;
-    }
-
-    .about-div {
-        width: 100%;
-        order: 2;
-    }
-
-    .about-text {
-        padding: 3rem 2rem;
-        gap: 1.5rem;
-    }
-
-    .about-text h1 {
-        font-size: clamp(2.2rem, 4vw, 3rem);
-    }
-
-    .about-text p {
-        padding: 0 1.5rem;
-        font-size: clamp(1rem, 1.5vw, 1.1rem);
-        text-align: left;
-    }
-
-    .about-div>img {
-        height: 180px;
-    }
-
-    /* Book Section - Tablet */
-    .book-container {
-        flex-direction: column;
-        gap: 3rem;
-    }
-
-    .book-cover-wrapper {
-        width: 100%;
-        max-width: 400px;
-    }
-
-    .synopsis-card {
-        width: 100%;
-        max-width: 600px;
-    }
-
-    /* Reviews Section - Tablet */
-    .reviews-content {
-        flex-direction: column;
-        gap: 3rem;
-    }
-
-    .bookmark-container {
-        order: -1;
-    }
-
-    .bookmark-img {
-        width: 180px;
-    }
-
-    .reviews-column {
-        max-width: 100%;
-    }
-
-    .btn-amazon {
-        align-self: center;
-    }
-
-    /* Contact Section - Tablet */
-    .contact-card {
-        flex-direction: column;
-        max-width: 600px;
-    }
-
-    .card-visual {
-        display: none;
-    }
-
-    .card-info,
-    .card-form-wrapper {
-        padding: 2.5rem 2rem;
-    }
-}
-
-/* Laptop (até 1024px) */
-@media (max-width: 1024px) {
-
-    /* About Section - Laptop */
-    #about {
-        flex-direction: column;
-        min-height: auto;
-    }
-
-    #leonan {
-        width: 100%;
-        height: auto;
-        min-height: 50%;
-        max-height: 100vh;
-        opacity: 1;
-        order: 1;
-    }
-
-    .about-div {
-        width: 100%;
-        order: 2;
-    }
-
-    .about-text {
-        padding: 3rem 2rem;
-        gap: 1.5rem;
-    }
-
-    .about-text h1 {
-        font-size: clamp(2.2rem, 4vw, 3rem);
-    }
-
-    .about-text p {
-        padding: 0 1.5rem;
-        font-size: clamp(1rem, 1.5vw, 1.1rem);
-        text-align: left;
-    }
-
-    .about-div>img {
-        height: 180px;
-    }
-
-    nav {
-        padding: 1rem 1.5rem 0 1.5rem;
-    }
-
-    ul {
-        gap: 2rem;
-    }
-
-    .nav-container {
-        gap: 2rem;
-    }
-}
-
 /* Mobile (até 767px) */
 @media (max-width: 767px) {
 
@@ -971,14 +820,17 @@ footer p {
 
     /* Hero Section - Mobile */
     #hero-section {
-        height: 100svh;
-        padding: 0 1rem;
+        height: fit-content;
+        min-height: 100svh;
+        padding-top: 70px;
+        padding: 70px 1rem 0 1rem;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     #hero-section header {
+        height: 70px;
         position: absolute;
         top: 0;
         left: 0;
@@ -1171,6 +1023,7 @@ footer p {
 
     .bookmark-img {
         width: 150px;
+        margin: 0;
     }
 
     .review-card {
@@ -1196,6 +1049,10 @@ footer p {
     /* Contact Section - Mobile */
     #contact {
         padding: 3rem 1rem;
+    }
+
+    .info-item span {
+        font-size: 14px;
     }
 
     .contact-header {
